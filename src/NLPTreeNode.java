@@ -87,7 +87,7 @@ public class NLPTreeNode<T> {
 		this.assignChildId();
 		this.assignTokenId();
 		int level = 0;
-		System.out.println(this.data + " " + this.nodeID);
+		System.out.println(this.data + " " + this.nodeID + " " + this.childID);
 		level++;
 		if (!this.children.isEmpty()) {
 			for (NLPTreeNode<T> child : this.children)
@@ -99,7 +99,7 @@ public class NLPTreeNode<T> {
 		for (int i = 0; i < level; i++) {
 			System.out.print("	");
 		}
-		System.out.println(this.data + " " + this.nodeID);
+		System.out.println(this.data + " " + this.nodeID + " " + this.childID);
 		level++;
 		if (!this.children.isEmpty()) {
 			for (NLPTreeNode<T> child : this.children)
