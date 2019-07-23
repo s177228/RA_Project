@@ -340,6 +340,8 @@ public class newCompare<T> {
 		}
 	}
 
+	///testing//permute
+	///
 	
 	public boolean isIgnore(T word) {
 		if (stop_word.contains(word))
