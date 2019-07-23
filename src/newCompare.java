@@ -495,24 +495,42 @@ public class newCompare<T> {
 			//////////////////////////////////
 			/////////////////////////////////
 			
-			/* bugedddddddd
-			//permute()
+			
+			//p
 			for(String rule : order_rules) {
 				if(currentExp.nodeID == Integer.parseInt(rule.split(":")[0])) {
 					System.out.println("In permute process, currentExp:" + currentExp.childID + " " + currentExp.data);//DEBUG
 					System.out.println("rule:" + rule);//DEBUG
 					List<int[]> permuteList;
 					int numOfUnorderNode = 0;
+					
+					//create 0-n array//e.g.permute[]{0,1,2}
+					int[] permute = new int[currentExp.children.size()];
+					for(int i = 0; i < permute.length; i++) {
+						permute[i] = i;
+					}
+					
+					//get numOfUnorderNode++;
 					for(String childIDString : rule.split(":")[1].split(",") ) {
-						int childID = Integer.parseUnsignedInt(childIDString);
 						numOfUnorderNode++;
 					}
-							
-					int[] permute = new int[currentExp.children.size()];
+					//array for unorder node index
+					int[] unoderNodes = new int[numOfUnorderNode];
+					int unoderNodesIndex = 0;
+					
+					//replace index in rule by -1//e.g.permute[]{0,1,2} with UO rule node:0,2 -> permute[]{-1,1,-1}
+					//fill unoderNodes[] by unorder nodes//e.g. unoderNodes[]{0,2}
+					for(String childIDString : rule.split(":")[1].split(",") ) {
+						int childID = Integer.parseUnsignedInt(childIDString);
+						unoderNodes[unoderNodesIndex++] = childID;
+						permute[childID] = -1;
+					}	
+					
+					//////////////need to change the permute() output to continue
 					
 				}
 			}
-			*/
+			
 			
 			//code below are  the same as case 2 above //not test yet//copy only
 			for (NLPTreeNode<T> exp_child : currentExp.children) {
@@ -571,6 +589,14 @@ public class newCompare<T> {
 			A[j] = A[i];	A[i] = tmp;
 		}
 		return;
+	}
+	
+	public int factorial(int n) {
+	    int fact = 1;
+	    for (int i = 2; i <= n; i++) {
+	        fact = fact * i;
+	    }
+	    return fact;
 	}
 
 	/*
